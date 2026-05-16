@@ -1,0 +1,28 @@
+* {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+body {
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-size: x-large;
+}
+
+h2 {
+    font-style: bold;
+}

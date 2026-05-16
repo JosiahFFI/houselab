@@ -1,0 +1,18 @@
+[package]
+name = "houselab_dioxus"
+version = "0.1.0"
+authors = ["Kyllingene <jotorg@pm.me>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dioxus = { version = "0.7.1", features = [] }
+houselab_core = { path = "../core" }
+jiff = "0.2.24"
+
+[features]
+default = ["mobile"]
+web = ["dioxus/web", "jiff/js"]
+desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
