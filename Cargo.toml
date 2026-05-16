@@ -1,3 +1,7 @@
 [workspace]
 resolver = "3"
-members = ["core", "egui", "dioxus"]
+members = ["core", "egui"]
+
+# ignore dioxus for now, since I'm working on egui and core,
+# and don't want to have to keep dioxus in sync right now
+# members = ["core", "egui", "dioxus"]
