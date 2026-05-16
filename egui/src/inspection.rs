@@ -62,7 +62,7 @@ pub fn details(inspection: &mut Inspection, people: &People, ui: &mut egui::Ui) 
                 delete = true;
             }
 
-            egui::ComboBox::from_id_salt("realtor-select")
+            egui::ComboBox::from_id_salt("buyer-realtor-select")
                 .selected_text(&realtor.info.name)
                 .show_ui(ui, |ui| {
                     for option in &people.realtors {
@@ -80,7 +80,32 @@ pub fn details(inspection: &mut Inspection, people: &People, ui: &mut egui::Ui) 
     });
 
     ui.separator();
+    ui.heading("Seller's Agent");
+    let mut delete = false;
+    if let Some(realtor) = &mut inspection.seller {
+        ui.horizontal(|ui| {
+            if ui.button("Remove").clicked() {
+                delete = true;
+            }
 
+            egui::ComboBox::from_id_salt("seller-realtor-select")
+                .selected_text(&realtor.info.name)
+                .show_ui(ui, |ui| {
+                    for option in &people.realtors {
+                        ui.selectable_value(realtor, option.clone(), &option.info.name);
+                    }
+                });
+        });
+    } else {
+        if ui.button("Set").clicked() && let Some(realtor) = people.realtors.first() {
+            inspection.seller = Some(realtor.clone());
+        }
+    }
+    if delete {
+        inspection.seller = None;
+    }
+
+    ui.separator();
     ui.horizontal(|ui| {
         ui.heading("Inspectors");
 

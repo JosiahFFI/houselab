@@ -114,6 +114,10 @@ impl Houselab {
             // This might be a little hacky, but it's the officially endorsed method.
             // Since it's now RTL, the items need to be in reverse order.
             ui.with_layout(egui::Layout::right_to_left(egui::Align::RIGHT), |ui| {
+                if ui.button("Exit").clicked() {
+                    std::process::exit(0);
+                }
+
                 if ui.button("Images").clicked() {
                     self.current_page = Page::Images;
                 }

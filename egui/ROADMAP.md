@@ -15,7 +15,7 @@
 - [x] Inspection details editing
     - [x] Name, description
     - [x] Date
-    - [o] Inspectors, client, seller (from premade list)
+    - [x] Inspectors, client, seller (from premade list)
 
 - [x] Multiple pages framework w/ buttons in header
 - [x] Person editor (inspectors, clients, realtors)
