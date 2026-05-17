@@ -114,21 +114,42 @@ impl Houselab {
             // This might be a little hacky, but it's the officially endorsed method.
             // Since it's now RTL, the items need to be in reverse order.
             ui.with_layout(egui::Layout::right_to_left(egui::Align::RIGHT), |ui| {
-                if ui.button("Exit").clicked() {
-                    std::process::exit(0);
-                }
-
-                if ui.button("Images").clicked() {
-                    self.current_page = Page::Images;
-                }
-                if ui.button("People").clicked() {
-                    self.current_page = Page::People;
-                }
-                if ui.button("Inspection").clicked() {
-                    self.current_page = Page::Inspection;
-                }
-                if ui.button("Manage").clicked() {
-                    self.current_page = Page::Manage;
+                let width = ui.ctx().content_rect().width();
+                if width > 700.0 {
+                    if ui.button("Exit").clicked() {
+                        std::process::exit(0);
+                    }
+                    if ui.button("Images").clicked() {
+                        self.current_page = Page::Images;
+                    }
+                    if ui.button("People").clicked() {
+                        self.current_page = Page::People;
+                    }
+                    if ui.button("Inspection").clicked() {
+                        self.current_page = Page::Inspection;
+                    }
+                    if ui.button("Manage").clicked() {
+                        self.current_page = Page::Manage;
+                    }
+                } else {
+                    // RTL doesn't extend into menus, so this needs to be normally ordered
+                    egui::Popup::menu(&ui.button("Menu")).show(|ui| {
+                        if ui.button("Manage").clicked() {
+                            self.current_page = Page::Manage;
+                        }
+                        if ui.button("Inspection").clicked() {
+                            self.current_page = Page::Inspection;
+                        }
+                        if ui.button("People").clicked() {
+                            self.current_page = Page::People;
+                        }
+                        if ui.button("Images").clicked() {
+                            self.current_page = Page::Images;
+                        }
+                        if ui.button("Exit").clicked() {
+                            std::process::exit(0);
+                        }
+                    });
                 }
             });
         });

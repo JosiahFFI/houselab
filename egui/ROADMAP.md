@@ -81,3 +81,8 @@
 
 - [ ] Allow editing basic colors/fonts/logos
 - [ ] Find some templating language to allow editing the final PDF's appearance
+
+## Platform support
+
+- [ ] Thoroughly test on Linux, Windows, and Android
+- [ ] Ensure app remains usable on smaller devices (like phones)
