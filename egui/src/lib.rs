@@ -1,4 +1,4 @@
-#![cfg_attr(not(debug_assertions), windows_subsytem = "windows")]
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod sidebar;
 
@@ -14,7 +14,7 @@ pub mod style;
 use houselab_core::{
     Color, Comment, List, Severity,
     inspection::Inspection,
-    person::{People, Client, Inspector, Person, Realtor},
+    person::{Client, Inspector, People, Person, Realtor},
     template::{Id, Section, Template},
 };
 
@@ -34,7 +34,7 @@ fn android_main(app: winit::platform::android::activity::AndroidApp) {
         options,
         Box::new(|cc| {
             egui_extras::install_image_loaders(&cc.egui_ctx);
-            style::android(&cc.egui_ctx);
+            style::apply(&cc.egui_ctx);
 
             Ok(Box::new(Houselab {
                 people: houselab_core::test::people(),

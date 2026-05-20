@@ -1,5 +1,5 @@
 #[cfg(target_os = "android")]
-pub fn android(ctx: &egui::Context) {
+pub fn apply(ctx: &egui::Context) {
     use egui::FontFamily::Proportional;
     use egui::FontId;
     use egui::TextStyle::*;
@@ -23,12 +23,22 @@ pub fn android(ctx: &egui::Context) {
         style.spacing.item_spacing = egui::Vec2 { x: 12.0, y: 8.0 };
         style.spacing.button_padding = egui::Vec2 { x: 8.0, y: 4.0 };
         style.spacing.icon_width = 24.0;
+
+        #[cfg(debug_assertions)]
+        {
+            style.debug.warn_if_rect_changes_id = false;
+        }
     });
 }
 
 #[cfg(not(target_os = "android"))]
-pub fn desktop(ctx: &egui::Context) {
+pub fn apply(ctx: &egui::Context) {
     ctx.all_styles_mut(move |style| {
         style.spacing.scroll = egui::style::ScrollStyle::thin();
+
+        #[cfg(debug_assertions)]
+        {
+            style.debug.warn_if_rect_changes_id = false;
+        }
     });
 }

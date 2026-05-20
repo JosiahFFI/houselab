@@ -11,7 +11,7 @@ fn main() -> eframe::Result {
         options,
         Box::new(|cc| {
             egui_extras::install_image_loaders(&cc.egui_ctx);
-            houselab_egui::style::desktop(&cc.egui_ctx);
+            houselab_egui::style::apply(&cc.egui_ctx);
 
             Ok(Box::new(houselab_egui::Houselab {
                 people: houselab_core::test::people(),
