@@ -69,12 +69,10 @@ pub fn details(inspection: &mut Inspection, people: &People, ui: &mut egui::Ui) 
                         ui.selectable_value(realtor, option.clone(), &option.info.name);
                     }
                 });
-        } else {
-            if ui.button("Set").clicked()
-                && let Some(realtor) = people.realtors.first()
-            {
-                inspection.client.realtor = Some(realtor.clone());
-            }
+        } else if ui.button("Set").clicked()
+            && let Some(realtor) = people.realtors.first()
+        {
+            inspection.client.realtor = Some(realtor.clone());
         }
         if delete {
             inspection.client.realtor = None;
@@ -98,12 +96,10 @@ pub fn details(inspection: &mut Inspection, people: &People, ui: &mut egui::Ui) 
                     }
                 });
         });
-    } else {
-        if ui.button("Set").clicked()
-            && let Some(realtor) = people.realtors.first()
-        {
-            inspection.seller = Some(realtor.clone());
-        }
+    } else if ui.button("Set").clicked()
+        && let Some(realtor) = people.realtors.first()
+    {
+        inspection.seller = Some(realtor.clone());
     }
     if delete {
         inspection.seller = None;
@@ -423,10 +419,8 @@ pub fn section(
         });
 
         ui.text_edit_multiline(description);
-    } else {
-        if ui.button("Add description").clicked() {
-            section.description = Some(String::new());
-        }
+    } else if ui.button("Add description").clicked() {
+        section.description = Some(String::new());
     }
     if delete {
         section.description = None;

@@ -112,10 +112,11 @@ impl Houselab {
             }
 
             // This might be a little hacky, but it's the officially endorsed method.
-            // Since it's now RTL, the items need to be in reverse order.
-            ui.with_layout(egui::Layout::right_to_left(egui::Align::RIGHT), |ui| {
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::LEFT), |ui| {
                 let width = ui.ctx().content_rect().width();
+
                 if width > 700.0 {
+                    // Since it's now RTL, the items need to be in reverse order.
                     if ui.button("Exit").clicked() {
                         std::process::exit(0);
                     }
@@ -132,7 +133,7 @@ impl Houselab {
                         self.current_page = Page::Manage;
                     }
                 } else {
-                    // RTL doesn't extend into menus, so this needs to be normally ordered
+                    // RTL doesn't invert vertically, so this needs to be normally ordered
                     egui::Popup::menu(&ui.button("Menu")).show(|ui| {
                         if ui.button("Manage").clicked() {
                             self.current_page = Page::Manage;

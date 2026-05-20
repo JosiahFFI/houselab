@@ -39,10 +39,8 @@ pub fn main(app: &mut crate::Houselab, ui: &mut egui::Ui) {
                 if ui.button("Remove").clicked() {
                     delete = true;
                 }
-            } else {
-                if ui.button("Set").clicked() {
-                    inspector.info.phone = Some(String::new());
-                }
+            } else if ui.button("Set").clicked() {
+                inspector.info.phone = Some(String::new());
             }
             if delete {
                 inspector.info.phone = None;
@@ -57,10 +55,8 @@ pub fn main(app: &mut crate::Houselab, ui: &mut egui::Ui) {
                 if ui.button("Remove").clicked() {
                     delete = true;
                 }
-            } else {
-                if ui.button("Set").clicked() {
-                    inspector.info.email = Some(String::new());
-                }
+            } else if ui.button("Set").clicked() {
+                inspector.info.email = Some(String::new());
             }
             if delete {
                 inspector.info.email = None;
@@ -138,10 +134,8 @@ pub fn main(app: &mut crate::Houselab, ui: &mut egui::Ui) {
                 if ui.button("Remove").clicked() {
                     delete = true;
                 }
-            } else {
-                if ui.button("Set").clicked() {
-                    realtor.info.phone = Some(String::new());
-                }
+            } else if ui.button("Set").clicked() {
+                realtor.info.phone = Some(String::new());
             }
             if delete {
                 realtor.info.phone = None;
@@ -156,10 +150,8 @@ pub fn main(app: &mut crate::Houselab, ui: &mut egui::Ui) {
                 if ui.button("Remove").clicked() {
                     delete = true;
                 }
-            } else {
-                if ui.button("Set").clicked() {
-                    realtor.info.email = Some(String::new());
-                }
+            } else if ui.button("Set").clicked() {
+                realtor.info.email = Some(String::new());
             }
             if delete {
                 realtor.info.email = None;
